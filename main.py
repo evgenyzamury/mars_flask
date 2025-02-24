@@ -196,5 +196,85 @@ def astronaut_selection():
         return "Форма отправлена"
 
 
+@app.route('/choice/<planet_name>')
+def planet(planet_name: str):
+    if planet_name.lower() == 'марс':
+        first = 'Это планета близка к Земле'
+        second = 'На ней много необходимых ресурсов'
+        third = 'На ней есть вода и атмосфера'
+        four = 'На ней есть небольшое магнитное поле'
+        five = 'Наконец, она просто красива!'
+    elif planet_name.lower() == 'венера':
+        first = 'Это планета близка к Земле'
+        second = 'На ней очень жарко'
+        third = 'На очень плотная атмосфера'
+        four = 'На ней есть небольшое магнитное поле'
+        five = 'Наконец, она просто красива!'
+    elif planet_name.lower() == 'меркурий':
+        first = 'Это планета самая близкая к Солнцу'
+        second = 'На ней очень жарко'
+        third = 'На сильно разряженная атмосфера'
+        four = 'На ней есть небольшое магнитное поле'
+        five = 'Наконец, она очень маленькая'
+    elif planet_name.lower() == 'земля':
+        first = 'Это планета наша родная'
+        second = 'На ней очень хорошо'
+        third = 'На ней хорошая атмосфера'
+        four = 'На ней есть магнитное поле'
+        five = 'Наконец, она живая'
+    elif planet_name.lower() == 'юпитер':
+        first = 'Это планета газовый гигант'
+        second = 'На ней нет твёрдой поверхности'
+        third = 'На ней крупнейшая атмосфера'
+        four = 'Пятая планета по удалённости от Солнца'
+        five = 'Наконец, она самая большая'
+    elif planet_name.lower() == 'сатурн':
+        first = 'Это планета газовый гигант'
+        second = 'На ней нет твёрдой поверхности'
+        third = 'У неё очень много спутников'
+        four = 'Самая низкая плотность планеты'
+        five = 'Наконец, у неё есть кольца'
+    elif planet_name.lower() == 'уран':
+        first = 'Это планета газовый гигант'
+        second = 'На ней нет твёрдой поверхности'
+        third = 'Она очень холодная'
+        four = 'На ней долгие полярные день и ночь'
+        five = 'Наконец, она очень красивая'
+    elif planet_name.lower() == 'уран':
+        first = 'Это планета газовый гигант'
+        second = 'На ней нет твёрдой поверхности'
+        third = 'Самая отдалённая от Солнца планета'
+        four = 'На ней самые сильные ветры'
+        five = 'Наконец, она планета'
+    else:
+        first = 'У нас нет данных этой планеты'
+        second = '-----'
+        third = '-----'
+        four = '-----'
+        five = '-----'
+    return f"""
+    <!doctype html>
+                <html lang="en">
+                  <head>
+                    <meta charset="utf-8">
+                    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+                    <link rel="stylesheet" type="text/css" href="{url_for('static', filename='css/style.css')}" />
+                    <link rel="stylesheet" 
+                    href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" 
+                    integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" 
+                    crossorigin="anonymous">
+                  </head>
+                  <body>
+                    <h2>Мое предложение: {planet_name}</h2>
+                    <h3>{first};</h3>
+                    <div class="alert alert-success"><h3>{second};</h3></div>
+                    <div class="alert alert-dark"><h3>{third};</h3></div>
+                    <div class="alert alert-warning"><h3>{four};</h3></div>
+                    <div class="alert alert-danger"><h3>{five}</h3></div>
+                  </body>
+                </html>
+        """
+
+
 if __name__ == '__main__':
     app.run(port=8080, host='127.0.0.1')
